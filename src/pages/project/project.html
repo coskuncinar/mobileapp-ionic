@@ -16,9 +16,13 @@
     [(ngModel)]="myInput" >
   </ion-searchbar> 
 <ion-list>
-  <ion-item *ngFor="let c of projects"> 
+    <button ion-item *ngFor="let c of projects" (click)="openDetails(c.id)">
+        {{ c.title }}
+      </button>
+
+  <!-- <ion-item *ngFor="let c of projects"> 
     {{c.id}} - {{c.title}}
-  </ion-item>
+  </ion-item> -->
 </ion-list>
 
 </ion-content>

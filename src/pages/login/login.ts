@@ -3,6 +3,9 @@ import { NavController, AlertController, LoadingController, Loading, IonicPage }
 import { AuthProvider } from '../../providers/auth/auth';
 import { TabsPage } from '../tabs/tabs';
  
+
+ 
+
 @IonicPage()
 @Component({
   selector: 'page-login',
@@ -25,8 +28,7 @@ export class LoginPage {
           this.nav.setRoot(TabsPage);
         } else {
           this.showError(sonuc.message);
-        }
-        
+        }        
       //console.log(result); 
     }, (err) => {
       this.showError(err);
@@ -47,7 +49,7 @@ export class LoginPage {
   showLoading() {
     this.loading = this.loadingCtrl.create({
       content: 'Lütfen bekleyiniz...',
-      dismissOnPageChange: true
+      dismissOnPageChange: true, 
     });
     this.loading.present();
   }
@@ -56,7 +58,7 @@ export class LoginPage {
     this.loading.dismiss(); 
     let alert = this.alertCtrl.create({
       title: 'Hata',
-      subTitle: text,
+      subTitle: text, 
       buttons: ['Tamam']
     });
     alert.present();

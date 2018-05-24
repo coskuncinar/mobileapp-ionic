@@ -16,6 +16,7 @@ import { RestapiProvider } from '../providers/restapi/restapi';
 import { HttpClientModule } from '@angular/common/http';
 import { CompanyPage } from '../pages/company/company';
 import { ProjectPage } from '../pages/project/project';
+import { ProjectDetailsPage } from '../pages/project-details/project-details';
 
 
 @NgModule({
@@ -27,7 +28,8 @@ import { ProjectPage } from '../pages/project/project';
     LoginPage,
     TabsPage,
     CompanyPage,
-    ProjectPage
+    ProjectPage,
+    ProjectDetailsPage
   ],
   imports: [
     BrowserModule,
@@ -43,7 +45,8 @@ import { ProjectPage } from '../pages/project/project';
     LoginPage,
     TabsPage,
     CompanyPage,
-    ProjectPage
+    ProjectPage,
+    ProjectDetailsPage
   ],
   providers: [
     StatusBar,
