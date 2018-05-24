@@ -20,9 +20,7 @@ export class RestapiProvider {
     console.log('Hello RestProvider Provider');
   }
 
-  getProjects(): Observable<string[]> {
-
-   
+  getProjects(): Observable<string[]> { 
     return this.http.get(this.apiUrl).pipe(
       map(this.extractData),
       catchError(this.handleError)

@@ -8,14 +8,14 @@ import { LoginPage } from '../login/login';
   templateUrl: 'home.html'
 })
 export class HomePage {
-  username = '';
   email = '';
+  token = '';
 
 
   constructor(private nav: NavController, private auth: AuthProvider) {
     let info = this.auth.getUserInfo();
-    this.username = info['name'];
     this.email = info['email'];
+    this.token = info['token'];
   }
  
   
