@@ -30,18 +30,22 @@ export class RestapiProvider {
       catchError(this.handleError)
     );
   }
-
-  getProjectDetails(id : string): Observable<string> { 
-    //console.log(this.apiUrl+'get-project-detail/token/'+this.token+'/id/'+id);
-    return this.http.get(this.apiUrl+'get-project-detail/token/'+this.token+'/id/'+id).pipe(
-      map(this.extractData),
-      catchError(this.handleError)
-    );
+ 
+   getProjectDetails(id)  {  
+    return new Promise((resolve, reject) => { 
+      return this.http.get(this.apiUrl+'get-project-detail/token/'+this.token+'/id/'+id)
+        .subscribe(res => { 
+          //console.log(res)
+          resolve(res); 
+        }, (err) => {
+          reject(err);
+      });
+    });
   }  
 
   private extractData(res: Response) {
     let body = res;
-    console.log(body);
+    //console.log(body);
     return body || {};
   }
 

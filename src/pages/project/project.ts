@@ -27,8 +27,7 @@ export class ProjectPage {
     this.rest.getProjects()
        .subscribe(
         projects => {
-           this.projects = projects.data;
-           //console.log(this.projects);
+           this.projects = projects.data; 
         },
          error =>  this.errorMessage = <any>error);
   }

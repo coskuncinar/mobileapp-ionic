@@ -2,12 +2,12 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { RestapiProvider } from '../../providers/restapi/restapi';
 
-/**
- * Generated class for the ProjectDetailsPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+
+interface IDetails
+{
+  title:string;
+  description:string;
+}
 
 @IonicPage()
 @Component({
@@ -15,7 +15,7 @@ import { RestapiProvider } from '../../providers/restapi/restapi';
   templateUrl: 'project-details.html',
 })
 export class ProjectDetailsPage {
-  details:any;
+  details:IDetails;
   id:string;
   errorMessage: string;
 
@@ -34,10 +34,9 @@ ionViewDidLoad() {
 
   getProjectDetail() {
     this.rest.getProjectDetails(this.id)
-       .subscribe(
-        details => {
-           this.details = JSON.stringify(details.data);
-           console.log(this.details);
+       .then( details => {
+           this.details = details.data as IDetails;
+           console.log(this.details.description);
         },
          error =>  this.errorMessage = <any>error);
   }

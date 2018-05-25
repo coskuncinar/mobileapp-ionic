@@ -2,10 +2,7 @@ import { Component } from '@angular/core';
 import { NavController, AlertController, LoadingController, Loading, IonicPage } from 'ionic-angular';
 import { AuthProvider } from '../../providers/auth/auth';
 import { TabsPage } from '../tabs/tabs';
- 
-
- 
-
+  
 @IonicPage()
 @Component({
   selector: 'page-login',
@@ -23,27 +20,16 @@ export class LoginPage {
  
   public login() {
     this.showLoading() 
-    this.auth.loginV2(this.registerCredentials).then((sonuc) => { 
+    this.auth.loginV2(this.registerCredentials).
+      then((sonuc) => { 
          if (sonuc.result ==="success") {        
           this.nav.setRoot(TabsPage);
         } else {
           this.showError(sonuc.message);
-        }        
-      //console.log(result); 
+        }         
     }, (err) => {
       this.showError(err);
-    });
-
-    // this.auth.login(this.registerCredentials).subscribe(allowed => {
-    //   if (allowed) {        
-    //     this.nav.setRoot(TabsPage);
-    //   } else {
-    //     this.showError("Access Denied");
-    //   }
-    // },
-    //   error => {
-    //     this.showError(error);
-    //   });
+    }); 
   }
  
   showLoading() {

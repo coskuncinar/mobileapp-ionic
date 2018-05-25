@@ -13,6 +13,13 @@ export class User {
   }
 }
  
+interface ISonuc {
+  result :string;
+  message:string;
+  token:string;
+} 
+  
+
 @Injectable()
 export class AuthProvider {
   currentUser: User;
@@ -26,11 +33,11 @@ export class AuthProvider {
   public loginV2(credentials) {
     return new Promise((resolve, reject) => { 
       const body = {email: credentials.email, password:md5( credentials.password,"hex")}; 
-      this.http.post(this.apiUrl, JSON.stringify(body) )
+      this.http.post(this.apiUrl, JSON.stringify(body))
         .subscribe(res => {
-          resolve(JSON.parse(JSON.stringify(res)))
-        this.sonuc =  JSON.parse(JSON.stringify(res)) ;
-        this.currentUser = new User(credentials.email,this.sonuc.token);
+          this.sonuc =  JSON.parse(JSON.stringify(res)) ;
+          this.currentUser = new User(credentials.email,this.sonuc.token);
+          resolve(res); 
         }, (err) => {
           reject(err);
         });
