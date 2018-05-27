@@ -13,7 +13,6 @@ export class TabsPage {
   tab2Root = ProjectPage;
   tab3Root = CompanyPage;
 
-  constructor() {
-
-  }
+  constructor() { 
+  }  
 }

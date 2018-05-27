@@ -12,6 +12,48 @@
 </ion-header>
  
 <ion-content class="home"> 
-    <h3>Hoşgeldiniz , {{email}}!</h3>
-    Eposta : {{token}}
+    <h3>Hoşgeldiniz , {{userinfo.firstName}} {{userinfo.lastName}}  </h3>
+
+    <ion-grid>
+        <ion-row>
+            <ion-col col-12>
+                <ion-card>
+                    <ion-card-content>
+                        <ion-card-title>
+                           Devam Eden projeler:{{dashboard.progressProjectCount}}
+                        </ion-card-title>            
+                    </ion-card-content>
+                </ion-card> 
+            </ion-col>
+            <ion-col col-12> 
+                <ion-card>
+                    <ion-card-content>
+                        <ion-card-title>
+                            Tamamlanan Projeler:{{dashboard.closedProjectCount}}
+                        </ion-card-title>            
+                        </ion-card-content>
+                </ion-card>
+            </ion-col>
+            <ion-col col-12> 
+                <ion-card>
+                    <ion-card-content>
+                        <ion-card-title>
+                        Aktif firmalar:{{dashboard.companyCount}}
+                        </ion-card-title>            
+                    </ion-card-content>
+                </ion-card>
+            </ion-col>
+            <ion-col col-12> 
+                <ion-card>
+                    <ion-card-content>
+                        <ion-card-title>
+                            Bakiye:{{dashboard.balanceCount}}
+                        </ion-card-title>            
+                        </ion-card-content>
+                </ion-card>
+            </ion-col>
+      </ion-row>
+        
+    </ion-grid>
+ 
 </ion-content>

@@ -34,8 +34,8 @@ export class AuthProvider {
     return new Promise((resolve, reject) => { 
       const body = {email: credentials.email, password:md5( credentials.password,"hex")}; 
       this.http.post(this.apiUrl, JSON.stringify(body))
-        .subscribe(res => {
-          this.sonuc =  JSON.parse(JSON.stringify(res)) ;
+        .subscribe( (res:ISonuc) => {
+          this.sonuc =  res ;
           this.currentUser = new User(credentials.email,this.sonuc.token);
           resolve(res); 
         }, (err) => {
@@ -56,18 +56,6 @@ export class AuthProvider {
     });
   }
 
-
-  // public register(credentials) {
-  //   if (credentials.email === null || credentials.password === null) {
-  //     return Observable.throw("Please insert credentials");
-  //   } else {
-  //     // At this point store the credentials to your backend!
-  //     return Observable.create(observer => {
-  //       observer.next(true);
-  //       observer.complete();
-  //     });
-  //   }
-  // }
  
   
 }

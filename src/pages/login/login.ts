@@ -3,11 +3,22 @@ import { NavController, AlertController, LoadingController, Loading, IonicPage }
 import { AuthProvider } from '../../providers/auth/auth';
 import { TabsPage } from '../tabs/tabs';
   
+
+interface ISonuc   {
+  readonly result: any;
+  readonly message:any;
+  readonly data: any;
+}
+
+
+
 @IonicPage()
 @Component({
   selector: 'page-login',
   templateUrl: 'login.html',
 })
+ 
+
 export class LoginPage {
   loading: Loading;
   registerCredentials = { email: '', password: '' };
@@ -15,13 +26,13 @@ export class LoginPage {
   constructor(private nav: NavController, private auth: AuthProvider, private alertCtrl: AlertController, private loadingCtrl: LoadingController) { }
  
   public createAccount() {
-    this.nav.push('RegisterPage');
+   // this.nav.push('RegisterPage');
   }
  
   public login() {
     this.showLoading() 
     this.auth.loginV2(this.registerCredentials).
-      then((sonuc) => { 
+      then((sonuc:ISonuc) => { 
          if (sonuc.result ==="success") {        
           this.nav.setRoot(TabsPage);
         } else {

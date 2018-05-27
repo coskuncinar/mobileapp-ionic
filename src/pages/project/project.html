@@ -1,28 +1,20 @@
-<!--
-  Generated template for the ProjectPage page.
-
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
 <ion-header>
-
-  <ion-navbar>
+  <ion-navbar color="dark">
     <ion-title>Proje Listesi</ion-title>
   </ion-navbar>
-</ion-header>
-
-<ion-content padding>
-    <ion-searchbar
-    [(ngModel)]="myInput" >
-  </ion-searchbar> 
-<ion-list>
-    <button ion-item *ngFor="let c of projects" (click)="openDetails(c.id)">
-        {{ c.title }}
-      </button>
-
-  <!-- <ion-item *ngFor="let c of projects"> 
-    {{c.id}} - {{c.title}}
-  </ion-item> -->
-</ion-list>
-
+</ion-header> 
+<ion-content  class="project">
+  <ion-searchbar  [(ngModel)]="searchTerm" (ionInput)="setFilteredItems()"></ion-searchbar>
+  <ion-list>
+      <button ion-item *ngFor="let c of projects" (click)="openDetails(c.id)">
+          {{c.id}} - {{c.title}}         
+          <p> 
+            <span class="floatLeft">{{ c.cityGroupName }} -{{ c.cityName }} - {{ c.stateName }}</span> 
+          </p>
+          <p>
+            <span class="floatRight"> Güncelleme tarihi : {{ c.updatedDate | date:"dd-MM-yyy"}}</span>
+          </p> 
+          
+      </button> 
+  </ion-list> 
 </ion-content>

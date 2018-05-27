@@ -1,13 +1,14 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { RestapiProvider } from '../../providers/restapi/restapi';
+ 
 
-
-interface IDetails
-{
-  title:string;
-  description:string;
+interface ISonuc   {
+  readonly result: any;
+  readonly message:any;
+  readonly data: any;
 }
+ 
 
 @IonicPage()
 @Component({
@@ -15,28 +16,53 @@ interface IDetails
   templateUrl: 'project-details.html',
 })
 export class ProjectDetailsPage {
-  details:IDetails;
-  id:string;
+  xid:string; 
+  details:any={  
+    id: '',
+    companyId: '',
+    customerId: '',
+    cityId: '',
+    stateId: '',
+    cityGroupId: '',
+    startDate: '',
+    finishDate: '',
+    status: '',
+    price: '',
+    currency: '',
+    landSize: '',
+    closedAreaSize: '',
+    structureType: '',
+    numberOfPart: '',
+    title: '',
+    description: '',
+    photo: '',
+    photos: '',
+    projectStatus: '',
+    createdDate: '',
+    createdBy: '',
+    updatedDate: '',
+    statusName: '',
+    structureTypeName: '',
+    projectStatusName: '',
+    cityGroupName: '',
+    cityName: '',
+    stateName: ''
+  };
+  
   errorMessage: string;
 
   constructor(public navCtrl: NavController, public navParams: NavParams,public rest : RestapiProvider) {
-    this.id = this.navParams.get('id');
-    // detayı için servise gidilecek
-    // console.log(this.id);
-   
-    //console.log(this.project);
+    this.xid = this.navParams.get('id');
   }
 
-ionViewDidLoad() {
-    this.getProjectDetail();
-    //console.log('ionViewDidLoad ProjectDetailsPage');
-  }
-
-  getProjectDetail() {
-    this.rest.getProjectDetails(this.id)
-       .then( details => {
-           this.details = details.data as IDetails;
-           console.log(this.details.description);
+  ionViewDidLoad() {
+    this.getProjectDetails();
+  } 
+  getProjectDetails() {
+    this.rest.getProjectDetails(this.xid)
+       .then( (data:ISonuc) => {
+           this.details = data.data;
+           //console.log(this.details);
         },
          error =>  this.errorMessage = <any>error);
   }
