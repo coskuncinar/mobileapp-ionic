@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, Loading, LoadingController } from 'ionic-angular';
 import { RestapiProvider } from '../../providers/restapi/restapi';
 
 interface ISonuc   {
@@ -19,15 +19,25 @@ export class CompanyPage {
   companies: any;
   errorMessage: string;
   searchTerm: string = '';
-  constructor(public navCtrl: NavController, public navParams: NavParams,public rest : RestapiProvider) {
+  loading: Loading;
+  constructor(public navCtrl: NavController, public navParams: NavParams,public rest : RestapiProvider,
+    private loadingCtrl: LoadingController) {
   }
   
   ionViewWillEnter() {
     // detaydan çıktığında tekrar doldurmasını istenirse açılsın burası
+    this.showLoading();
     this.searchTerm=''; 
     this.getCompanies(); 
+    this.loading.dismiss(); 
   }
-
+  showLoading() {
+    this.loading = this.loadingCtrl.create({
+      content: 'Lütfen bekleyiniz...',
+      dismissOnPageChange: true, 
+    });
+    this.loading.present();
+  }
   ionViewDidLoad() {
    // this.getProjects(); 
   } 

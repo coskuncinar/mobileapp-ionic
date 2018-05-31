@@ -2,8 +2,7 @@ import { Component } from '@angular/core';
 import { NavController, AlertController, LoadingController, Loading, IonicPage } from 'ionic-angular';
 import { AuthProvider } from '../../providers/auth/auth';
 import { TabsPage } from '../tabs/tabs';
-import { Network } from '@ionic-native/network';
-  
+ 
 
 interface ISonuc   {
   readonly result: any;
