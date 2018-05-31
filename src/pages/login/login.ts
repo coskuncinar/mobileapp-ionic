@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NavController, AlertController, LoadingController, Loading, IonicPage } from 'ionic-angular';
 import { AuthProvider } from '../../providers/auth/auth';
 import { TabsPage } from '../tabs/tabs';
+import { Network } from '@ionic-native/network';
   
 
 interface ISonuc   {
@@ -9,8 +10,6 @@ interface ISonuc   {
   readonly message:any;
   readonly data: any;
 }
-
-
 
 @IonicPage()
 @Component({
@@ -22,16 +21,22 @@ interface ISonuc   {
 export class LoginPage {
   loading: Loading;
   registerCredentials = { email: '', password: '' };
+  public check : boolean = true;
+
+  constructor(
+      private nav: NavController, 
+      private auth: AuthProvider, 
+      private alertCtrl: AlertController, 
+      private loadingCtrl: LoadingController ) {}
   
-  constructor(private nav: NavController, private auth: AuthProvider, private alertCtrl: AlertController, private loadingCtrl: LoadingController) { }
- 
-  public createAccount() {
-   // this.nav.push('RegisterPage');
+
+  ionViewDidEnter() {
+   
   }
- 
+  
   public login() {
     this.showLoading() 
-    this.auth.loginV2(this.registerCredentials).
+    this.auth.login(this.registerCredentials).
       then((sonuc:ISonuc) => { 
          if (sonuc.result ==="success") {        
           this.nav.setRoot(TabsPage);

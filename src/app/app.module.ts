@@ -17,6 +17,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { CompanyPage } from '../pages/company/company';
 import { ProjectPage } from '../pages/project/project';
 import { ProjectDetailsPage } from '../pages/project-details/project-details';
+import { Network } from '@ionic-native/network';
 
 
 @NgModule({
@@ -34,7 +35,7 @@ import { ProjectDetailsPage } from '../pages/project-details/project-details';
   imports: [
     BrowserModule,
     HttpClientModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -53,7 +54,8 @@ import { ProjectDetailsPage } from '../pages/project-details/project-details';
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     AuthProvider,
-    RestapiProvider
+    RestapiProvider,
+    Network
   ]
 })
 export class AppModule {}

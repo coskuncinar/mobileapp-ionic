@@ -19,7 +19,6 @@ export class RestapiProvider {
   private apiUrl = 'https://www.sizinproje.com/api/';
   
   constructor(public http: HttpClient,private auth:AuthProvider) {
-    //console.log('Hello RestProvider Provider');
     let info = this.auth.getUserInfo();
     this.token = info['token'];
   }
@@ -28,7 +27,6 @@ export class RestapiProvider {
     return new Promise((resolve, reject) => { 
       return this.http.get(this.apiUrl+'get-user-info/token/'+this.token)
       .subscribe( (res:ISonuc) => { 
-          //console.log(res)
           resolve(res); 
         }, (err) => {
           reject(err);
@@ -40,7 +38,6 @@ export class RestapiProvider {
     return new Promise((resolve, reject) => { 
       return this.http.get(this.apiUrl+'get-dashboard-counts/token/'+this.token)
       .subscribe( (res:ISonuc) => { 
-          //console.log(res)
           resolve(res); 
         }, (err) => {
           reject(err);
@@ -53,7 +50,6 @@ export class RestapiProvider {
     return new Promise((resolve, reject) => { 
       return this.http.get(this.apiUrl+'get-project-list/token/'+this.token)
       .subscribe( (res:ISonuc) => { 
-          //console.log(res)
           this.tempProjeDetay = res;
           resolve(this.tempProjeDetay); 
         }, (err) => {
@@ -80,7 +76,6 @@ export class RestapiProvider {
 
   getCompanies()  {  
     return new Promise((resolve, reject) => {
-      console.log(this.apiUrl+'get-company-list/token/'+this.token);
       return this.http.get(this.apiUrl+'get-company-list/token/'+this.token)
       .subscribe( (res:ISonuc) => { 
           //console.log(res)

@@ -24,27 +24,30 @@ export class ProjectPage {
   searchTerm: string = '';
   constructor(public navCtrl: NavController, public navParams: NavParams,public rest : RestapiProvider) {
   }
-  
   ionViewWillEnter() {
     // detaydan çıktığında tekrar doldurmasını istenirse açılsın burası
     this.searchTerm=''; 
     this.getProjects(); 
   }
-
   ionViewDidLoad() {
    // this.getProjects(); 
   } 
   getProjects() {
     this.rest.getProjects()
-       .then( (data:ISonuc) => {
-           this.projects = data.data;
-        },
-         error =>  this.errorMessage = <any>error
-        );
+      .then( (data:ISonuc) => {
+        this.projects = data.data;
+      },
+      error =>  this.errorMessage = <any>error
+    );
   }
-  
+
   openDetails(id) {
-    this.navCtrl.push(ProjectDetailsPage, {id: id});
+    this.rest.getProjectDetails(id)
+    .then( (data:any) => {
+        this.navCtrl.push(ProjectDetailsPage, {details: data.data});
+      },
+      error =>  this.errorMessage = <any>error
+    );
   }
 
   setFilteredItems() { 

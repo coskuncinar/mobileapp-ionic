@@ -30,7 +30,7 @@ export class AuthProvider {
   constructor(public http: HttpClient) {
     //console.log('Hello RestProvider Provider');
   } 
-  public loginV2(credentials) {
+  public login(credentials) {
     return new Promise((resolve, reject) => { 
       const body = {email: credentials.email, password:md5( credentials.password,"hex")}; 
       this.http.post(this.apiUrl, JSON.stringify(body))
