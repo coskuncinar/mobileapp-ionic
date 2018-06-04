@@ -31,20 +31,34 @@ export class ProjectPage {
 
   }
   ionViewWillLeave() {
-    this.rest.projestatus=0;
+    this.rest.projestatus = 0;
     //console.log("ionViewWillLeave: before it stops being the active");
   }
- 
+  totalCount(data) {
+    console.log(data);
+  }
+
+  doRefresh(refresher) {
+    setTimeout(() => {
+      this.status = 0;//this.rest.projestatus;
+      if (typeof this.status === "undefined") {
+        this.status = 0;
+      }
+      this.searchTerm = '';
+      this.getProjects();
+      refresher.complete();
+    }, 1000);
+  }
+
+
   ionViewWillEnter() {
     this.status = this.rest.projestatus;
     if (typeof this.status === "undefined") {
       this.status = 0;
     }
-    
-   // console.log("status:" + this.status);
-    // detaydan çıktığında tekrar doldurmasını istenirse açılsın burası
     this.searchTerm = '';
     this.getProjects();
+    this.rest.projestatus = 0;
   }
   showLoading() {
     this.loading = this.loadingCtrl.create({
@@ -58,7 +72,6 @@ export class ProjectPage {
     // this.getProjects(); 
   }
   getProjects() {
-   
     this.showLoading();
 
     this.rest.getProjects(this.status)
@@ -73,7 +86,7 @@ export class ProjectPage {
       );
   }
 
-   
+
   openDetails(id) {
     this.showLoading();
     this.rest.getProjectDetails(id)
@@ -86,23 +99,9 @@ export class ProjectPage {
   }
 
   setFilteredItems() {
+    console.log(this.searchTerm);
     this.projects = this.rest.filterProjects(this.searchTerm);
   }
 
-    ionViewDidEnter() {
-    console.log("ionViewDidEnter: after it becomes the active");
-  } 
-  
-  ionViewDidLeave() {
-    console.log("ionViewDidLeave: after it stops being the active");
-  } 
-  ionViewWillUnload() {
-    console.log("ionViewWillUnload: Fired when a view is going to be completely removed");
-  }  
-  ionViewCanEnter() {
-    console.log("ionViewCanEnter: Fired before entering into a view");
-  } 
-  ionViewCanLeave() {
-    console.log("ionViewCanLeave: Fired before leaving a view");
-  } 
+
 }

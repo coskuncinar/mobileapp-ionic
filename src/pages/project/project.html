@@ -1,10 +1,18 @@
 <ion-header>
   <ion-navbar color="dark">
-    <ion-title>Proje Listesi</ion-title>
+    <ion-title>Proje Listesi </ion-title>
   </ion-navbar>
 </ion-header> 
 <ion-content  class="project">
-  <ion-searchbar  [(ngModel)]="searchTerm" (ionInput)="setFilteredItems()"></ion-searchbar>
+  <ion-searchbar  [(ngModel)]="searchTerm" (ionInput)="setFilteredItems()"  ></ion-searchbar>
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content
+      pullingIcon="arrow-dropdown"
+      pullingText="Pull to refresh"
+      refreshingSpinner="circles"
+      refreshingText="Sayfa Yenileniyor...">
+    </ion-refresher-content>
+  </ion-refresher>
   <ion-list>
       <button ion-item *ngFor="let c of projects" (click)="openDetails(c.id)">
           {{c.id}} - {{c.title}}         
@@ -16,5 +24,5 @@
           </p> 
           
       </button> 
-  </ion-list> 
+  </ion-list>  
 </ion-content>
