@@ -1,59 +1,67 @@
 <ion-header>
-  <ion-navbar color="dark">
-    <ion-title>
-     Genel Bilgiler
-    </ion-title>
-    <ion-buttons end>
-      <button ion-button (click)="logout()">
-        <ion-icon name="log-out"></ion-icon>
-      </button>
-    </ion-buttons>
-  </ion-navbar>
+    <ion-navbar color="dark">
+        <ion-title>
+            Sizinproje.com
+        </ion-title>
+        <ion-buttons end>
+            <button ion-button (click)="logout()">
+                <ion-icon name="log-out"></ion-icon>
+            </button>
+        </ion-buttons>
+    </ion-navbar>
 </ion-header>
- 
-<ion-content class="home"> 
-    <h3>Hoşgeldiniz , {{userinfo.firstName}} {{userinfo.lastName}}  </h3>
 
-    <ion-grid>
-        <ion-row>
-            <ion-col col-12>
-                <ion-card>
-                    <ion-card-content>
-                        <ion-card-title>
-                           Devam Eden projeler:{{dashboard.progressProjectCount}}
-                        </ion-card-title>            
-                    </ion-card-content>
-                </ion-card> 
-            </ion-col>
-            <ion-col col-12> 
-                <ion-card>
-                    <ion-card-content>
-                        <ion-card-title>
-                            Tamamlanan Projeler:{{dashboard.closedProjectCount}}
-                        </ion-card-title>            
-                        </ion-card-content>
-                </ion-card>
-            </ion-col>
-            <ion-col col-12> 
-                <ion-card>
-                    <ion-card-content>
-                        <ion-card-title>
-                        Aktif firmalar:{{dashboard.companyCount}}
-                        </ion-card-title>            
-                    </ion-card-content>
-                </ion-card>
-            </ion-col>
-            <ion-col col-12> 
-                <ion-card>
-                    <ion-card-content>
-                        <ion-card-title>
-                            Bakiye:{{dashboard.balanceCount}}
-                        </ion-card-title>            
-                        </ion-card-content>
-                </ion-card>
-            </ion-col>
-      </ion-row>
-        
-    </ion-grid>
- 
+
+<ion-content class="home">
+    <!-- <div class="wrapper">
+                <header>
+                   <h1>Ionic Technologies</h1>
+                </header>
+          
+                <div class="box red">
+                   <h2>Angular</h2>
+                   <p>Front-end development framework</p>
+                </div> 
+                <footer>Footer</footer>
+             </div>
+      -->
+
+    <div style="text-align: center;">
+        <h3>Hoşgeldiniz , {{userinfo.firstName}} {{userinfo.lastName}} </h3>
+    </div>
+    <ion-row>
+        <ion-col col-6>
+            <button ion-button class="submit-btn" full large margin (click)="projelist(1)">
+                <ion-icon name="calculator" item-left style="margin-right:10px;font-size: 40px "></ion-icon>
+                {{dashboard.progressProjectCount}}
+            </button>
+            <div style="background-color: #d56039;height: 25px;padding-top: 5px;text-align: center">
+                Devam Eden projeler
+            </div>
+        </ion-col>
+        <ion-col col-6>
+            <button ion-button class="submit-btn" full large margin (click)="projelist(2)"  >
+                <ion-icon name="checkmark-circle" item-left style="margin-right:10px;font-size: 40px "></ion-icon>
+                {{dashboard.closedProjectCount}}</button>
+            <div style="background-color: #d56039;height: 25px;padding-top: 5px;text-align: center">
+                Tamamlanan Projeler
+            </div>
+        </ion-col>
+        <ion-col col-6>
+            <button ion-button class="submit-btn" full large margin>
+                <ion-icon name="list" item-left style="margin-right:10px;font-size: 40px "></ion-icon>
+                {{dashboard.companyCount}} </button>
+            <div style="background-color: #d56039;height: 25px;padding-top: 5px;text-align: center">
+                Aktif firmalar
+            </div>
+        </ion-col>
+        <ion-col col-6>
+            <button ion-button class="submit-btn" full large margin> 
+                <ion-icon name="flash" item-left style="margin-right:10px;font-size: 40px "></ion-icon>
+                {{dashboard.balanceCount}} </button>
+            <div style="background-color: #d56039;height: 25px;padding-top: 5px;text-align: center">
+                Bakiye
+            </div>
+        </ion-col>
+    </ion-row>
 </ion-content>

@@ -14,6 +14,7 @@ interface ISonuc   {
 export class RestapiProvider {
 
   token = '';
+  public projestatus:any;
   public tempProjeDetay : ISonuc;
   public tempCompanyDetay : ISonuc;
   private apiUrl = 'https://www.sizinproje.com/api/';
@@ -46,9 +47,9 @@ export class RestapiProvider {
   }  
    
 
-  getProjects()  {  
+  getProjects(status)  {  
     return new Promise((resolve, reject) => { 
-      return this.http.get(this.apiUrl+'get-project-list/token/'+this.token)
+      return this.http.get(this.apiUrl+'get-project-list/status/'+status+'/token/'+this.token)
       .subscribe( (res:ISonuc) => { 
           this.tempProjeDetay = res;
           resolve(this.tempProjeDetay); 

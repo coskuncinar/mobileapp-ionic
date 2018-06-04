@@ -2,12 +2,13 @@ import { Component } from '@angular/core';
 import { AuthProvider } from '../../providers/auth/auth';
 import { LoginPage } from '../login/login';
 
-import { App } from 'ionic-angular';
+import { App, NavController, ViewController } from 'ionic-angular';
 import { RestapiProvider } from '../../providers/restapi/restapi';
+import { ProjectPage } from '../project/project';
 
-interface ISonuc   {
+interface ISonuc {
   readonly result: any;
-  readonly message:any;
+  readonly message: any;
   readonly data: any;
 }
 
@@ -18,52 +19,54 @@ interface ISonuc   {
 export class HomePage {
   email = '';
   token = '';
-  dashboard:any={  
+  dashboard: any = {
     progressProjectCount: '',
     closedProjectCount: '',
     companyCount: '',
     balanceCount: ''
   };
-  userinfo:any= {
-    firstName:'',
-    lastName:''
+  userinfo: any = {
+    firstName: '',
+    lastName: ''
   }
   errorMessage: string;
 
-  constructor(private auth: AuthProvider,private app:App,public rest:RestapiProvider) {
+  constructor(private auth: AuthProvider, private app: App, 
+    public rest: RestapiProvider, 
+    public nav: NavController,
+  ) {
     let info = this.auth.getUserInfo();
     this.email = info['email'];
-    this.token = info['token']; 
+    this.token = info['token'];
   }
 
   ionViewDidLoad() {
-     //console.log("ionViewDidLoad: Fired only when a view is stored in memory");
-     this.getUserInfo();
-   }
-
+    this.getUserInfo();
+  }
   getUserInfo() {
     this.rest.getUserInfo()
-       .then( (data:ISonuc) => {
-           this.userinfo = data.data;
-        },
-         error =>  this.errorMessage = <any>error
-        );
+      .then((data: ISonuc) => {
+        this.userinfo = data.data;
+      },
+        error => this.errorMessage = <any>error
+      );
   }
   ionViewWillEnter() {
-    //console.log("ionViewWillEnter: before it becomes the active"); 
+  //  console.log("ionViewWillEnter: before it becomes the active"); 
+    
     this.getDasboard();
-    // kullanıcı bilgisi getirilecek
-    // kredi bilgisi otomatik güncellecek 
-  } 
-  
-  
+  }
+  projelist(status) {
+    this.rest.projestatus=status;
+    this.nav.parent.select(1);
+  }
   getDasboard() {
     this.rest.getDashboard()
-       .then( (data:ISonuc) => {
-           this.dashboard = data.data;
-        },
-         error =>  this.errorMessage = <any>error
-        );
+      .then((data: ISonuc) => {
+        this.dashboard = data.data;
+      },
+        error => this.errorMessage = <any>error
+      );
   }
   // ionViewDidEnter() {
   //   console.log("ionViewDidEnter: after it becomes the active");
