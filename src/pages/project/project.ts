@@ -31,7 +31,6 @@ export class ProjectPage {
 
   }
   ionViewWillLeave() {
-    this.rest.projestatus = 0;
     //console.log("ionViewWillLeave: before it stops being the active");
   }
   totalCount(data) {
@@ -49,8 +48,7 @@ export class ProjectPage {
       refresher.complete();
     }, 1000);
   }
-
-
+  
   ionViewWillEnter() {
     this.status = this.rest.projestatus;
     if (typeof this.status === "undefined") {
@@ -60,6 +58,7 @@ export class ProjectPage {
     this.getProjects();
     this.rest.projestatus = 0;
   }
+
   showLoading() {
     this.loading = this.loadingCtrl.create({
       content: 'Lütfen bekleyiniz...',
@@ -68,9 +67,7 @@ export class ProjectPage {
     this.loading.present();
   }
 
-  ionViewDidLoad() {
-    // this.getProjects(); 
-  }
+   
   getProjects() {
     this.showLoading();
 

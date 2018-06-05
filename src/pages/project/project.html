@@ -2,9 +2,10 @@
   <ion-navbar color="dark">
     <ion-title>Proje Listesi </ion-title>
   </ion-navbar>
+  <ion-searchbar  [(ngModel)]="searchTerm" (ionInput)="setFilteredItems()"  ></ion-searchbar>
 </ion-header> 
 <ion-content  class="project">
-  <ion-searchbar  [(ngModel)]="searchTerm" (ionInput)="setFilteredItems()"  ></ion-searchbar>
+ 
   <ion-refresher (ionRefresh)="doRefresh($event)">
     <ion-refresher-content
       pullingIcon="arrow-dropdown"
@@ -13,9 +14,9 @@
       refreshingText="Sayfa Yenileniyor...">
     </ion-refresher-content>
   </ion-refresher>
-  <ion-list>
+  <ion-list class="projectlist">
       <button ion-item *ngFor="let c of projects" (click)="openDetails(c.id)">
-          {{c.id}} - {{c.title}}         
+          <div style="color: #f37249;"> {{c.id}} - {{c.title}}  </div>       
           <p> 
             <span class="floatLeft">{{ c.cityGroupName }} -{{ c.cityName }} - {{ c.stateName }}</span> 
           </p>

@@ -2,9 +2,8 @@ import { Component } from '@angular/core';
 import { AuthProvider } from '../../providers/auth/auth';
 import { LoginPage } from '../login/login';
 
-import { App, NavController, ViewController } from 'ionic-angular';
+import { App, NavController } from 'ionic-angular';
 import { RestapiProvider } from '../../providers/restapi/restapi';
-import { ProjectPage } from '../project/project';
 
 interface ISonuc {
   readonly result: any;
@@ -68,6 +67,24 @@ export class HomePage {
         error => this.errorMessage = <any>error
       );
   }
+  
+
+  public logout() {
+    this.auth.logout().subscribe(succ => {
+      this.app.getRootNavs()[0].setRoot(LoginPage);
+    });
+  }
+
+  
+}
+
+
+//ionViewDidLoad(){
+  //   console.log("Fired only when a view is stored in memory. ");
+  //}
+  // ionViewWillEnter() {
+  //   console.log("ionViewWillEnter: before it becomes the active"); 
+  // }
   // ionViewDidEnter() {
   //   console.log("ionViewDidEnter: after it becomes the active");
   // } 
@@ -86,10 +103,3 @@ export class HomePage {
   // ionViewCanLeave() {
   //   console.log("ionViewCanLeave: Fired before leaving a view");
   // } 
-
-  public logout() {
-    this.auth.logout().subscribe(succ => {
-      this.app.getRootNavs()[0].setRoot(LoginPage);
-    });
-  }
-}
