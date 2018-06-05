@@ -1,17 +1,9 @@
 page-project-details {
     .project-details {
-        background: #424446;
+        background-color: #424446;
         color: #fff;
       }
-    .card-content {
-        background: #424446;
-        color: #fff;
-    }
     
-    .card-header {
-        background: #666;
-        color: #fff;
-    }
     .squaremeters {
         vertical-align: super;
         font-size: smaller;
@@ -19,5 +11,18 @@ page-project-details {
    .note-md  {
         color:#000 !important;
     }
-    
+
+    .label {
+        font-weight: bold;
+    }
+    .caption {
+        background-color: #666;
+        border-bottom: 1px solid #222;
+        box-shadow: 0 0 5px 0px #222;
+        color:#fff;
+
+        .item-inner {
+           border: 0px !important;
+        } 
+    }
 }

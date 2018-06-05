@@ -11,17 +11,16 @@
         </ion-slide>
     </ion-slides>
 
-
-    <ion-list class="profile-detail" no-padding>
+    <ion-list no-padding>
         <ion-row>
             <ion-col>
-                <ion-item  style="background-color: #333"> 
+                <ion-item class="caption">
                     <div> {{ details.title }} </div>
                     <p style="color: #fff">#{{ id2 }}</p>
-                </ion-item> 
+                </ion-item>
             </ion-col>
-            <ion-col  col-12>
-                <ion-item>
+            <ion-col col-12>
+                <ion-item >
                     <ion-label class="label">Bedeli</ion-label>
                     <ion-note item-end> {{ details.price | currency:' ':false }} {{details.currency.toUpperCase()}} </ion-note>
                 </ion-item>
@@ -38,7 +37,7 @@
                     <ion-note item-end>{{ details.finishDate | date:"dd-MM-yyyy"}}</ion-note>
                 </ion-item>
             </ion-col>
-            <ion-col>
+            <ion-col col-12>
                 <ion-item>
                     <ion-label class="label">Arsa Boyutu</ion-label>
                     <ion-note item-end>{{ details.landSize }} m
@@ -46,7 +45,7 @@
                     </ion-note>
                 </ion-item>
             </ion-col>
-            <ion-col>
+            <ion-col col-12>
                 <ion-item>
                     <ion-label class="label">Kapalı Alan</ion-label>
                     <ion-note item-end>{{ details.closedAreaSize }} m
@@ -54,48 +53,48 @@
                     </ion-note>
                 </ion-item>
             </ion-col>
-            <ion-col>
+            <ion-col col-12>
                 <ion-item>
                     <ion-label class="label">Bölüm Sayısı</ion-label>
                     <ion-note item-end>{{ details.numberOfPart }} </ion-note>
                 </ion-item>
             </ion-col>
-            <ion-col>
+            <ion-col col-12>
                 <ion-item>
                     <ion-label class="label">Yapı Türü</ion-label>
                     <ion-note item-end>{{ details.structureTypeName }} </ion-note>
                 </ion-item>
             </ion-col>
-            <ion-col>
+            <ion-col col-12>
                 <ion-item>
                     <ion-label class="label">Bölge</ion-label>
                     <ion-note item-end>{{ details.cityGroupName }} </ion-note>
                 </ion-item>
             </ion-col>
-            <ion-col>
+            <ion-col col-12>
                 <ion-item>
                     <ion-label class="label">Lokasyon</ion-label>
                     <ion-note item-end>{{ details.cityName }},{{ details.stateName }} </ion-note>
                 </ion-item>
             </ion-col>
-            <ion-col>
+            <ion-col col-12>
                 <ion-item>
                     <ion-label class="label">Proje Durumu</ion-label>
                     <ion-note item-end>{{ details.projectStatusName }} </ion-note>
                 </ion-item>
             </ion-col>
-            <ion-col>
+            <ion-col col-12>
                 <ion-item>
                     <ion-label class="label">Proje Aşaması</ion-label>
                     <ion-note item-end>{{ details.statusName }} </ion-note>
                 </ion-item>
             </ion-col>
-            <ion-col>
+            <ion-col col-12>
                 <ion-item>
                     <ion-label class="label">Proje Açıklaması</ion-label>
                 </ion-item>
             </ion-col>
-            <ion-col>
+            <ion-col col-12>
                 <ion-item>
                     <ion-note item-content>
                         {{ details.description }}

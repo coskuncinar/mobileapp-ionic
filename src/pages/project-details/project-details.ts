@@ -10,6 +10,7 @@ import { RestapiProvider } from '../../providers/restapi/restapi';
 export class ProjectDetailsPage {
   details: any;
   id2: any;
+  
   constructor(public navCtrl: NavController, public navParams: NavParams, public rest: RestapiProvider) {
     this.details = this.navParams.data.details;
     this.id2 = this.zeroFill(this.details.id,11);
@@ -19,7 +20,7 @@ export class ProjectDetailsPage {
     if (width > 0) {
       return new Array(width + (/\./.test(number) ? 2 : 1)).join('0') + number;
     }
-    return number + ""; // always return a string
+    return number + "";  
   }
 
   ionViewDidLoad() {

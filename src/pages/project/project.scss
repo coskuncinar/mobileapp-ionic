@@ -2,16 +2,24 @@ page-project {
     .project {
         background: #424446;
         color: #fff;
-    
+         
         .projectlist .item-md {
             padding:0px 10px;
             background-color: #424446 !important;
             color: #fff !important;
+            border-bottom:1px solid #222;
+            box-shadow: 0 0 5px 0px #222;
             p {
                 color: #eee;
             }
             .label-md {
                 margin: 8px 2px 8px 0;
+            }
+            button {
+                color: #666;
+            }
+            .item-inner {
+                border: 0px !important;
             }
         }
     }

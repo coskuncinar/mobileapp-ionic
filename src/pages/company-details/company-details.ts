@@ -1,12 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-
-/**
- * Generated class for the CompanyDetailsPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import { RestapiProvider } from '../../providers/restapi/restapi';
 
 @IonicPage()
 @Component({
@@ -14,12 +8,23 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'company-details.html',
 })
 export class CompanyDetailsPage {
+  details: any;
+  id2: any;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public rest: RestapiProvider) {
+    this.details = this.navParams.data.cdetails;
+    this.id2 = this.zeroFill(this.details.id,11);
+  }
+  zeroFill(number, width) {
+    width -= number.toString().length;
+    if (width > 0) {
+      return new Array(width + (/\./.test(number) ? 2 : 1)).join('0') + number;
+    }
+    return number + "";  
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad CompanyDetailsPage');
+   // console.log('ionViewDidLoad CompanyDetailsPage');
   }
 
 }

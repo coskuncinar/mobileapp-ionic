@@ -61,6 +61,7 @@ export class RestapiProvider {
   
   getProjectDetails(id)  {  
     return new Promise((resolve, reject) => { 
+      console.log(this.apiUrl+'get-project-detail/token/'+this.token+'/id/'+id);
       return this.http.get(this.apiUrl+'get-project-detail/token/'+this.token+'/id/'+id)
       .subscribe( res => { 
           resolve(res); 
@@ -91,7 +92,8 @@ export class RestapiProvider {
 
   getCompanyDetails(id)  {  
     return new Promise((resolve, reject) => { 
-      return this.http.get(this.apiUrl+'get-compay-detail/token/'+this.token+'/id/'+id)
+      console.log(this.apiUrl+'get-company-detail/token/'+this.token+'/id/'+id);
+      return this.http.get(this.apiUrl+'get-company-detail/token/'+this.token+'/id/'+id)
       .subscribe( res => { 
           resolve(res); 
         }, (err) => {

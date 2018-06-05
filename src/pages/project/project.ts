@@ -1,10 +1,7 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, LoadingController, Loading } from 'ionic-angular';
-
+import { IonicPage, NavController, NavParams, Loading, LoadingController } from 'ionic-angular';
 import { RestapiProvider } from '../../providers/restapi/restapi';
 import { ProjectDetailsPage } from '../project-details/project-details';
-
-
 
 interface ISonuc {
   readonly result: any;
@@ -24,17 +21,12 @@ export class ProjectPage {
   searchTerm: string = '';
   loading: Loading;
   status: any;
+
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
     public rest: RestapiProvider,
     private loadingCtrl: LoadingController) {
 
-  }
-  ionViewWillLeave() {
-    //console.log("ionViewWillLeave: before it stops being the active");
-  }
-  totalCount(data) {
-    console.log(data);
   }
 
   doRefresh(refresher) {
@@ -48,7 +40,7 @@ export class ProjectPage {
       refresher.complete();
     }, 1000);
   }
-  
+
   ionViewWillEnter() {
     this.status = this.rest.projestatus;
     if (typeof this.status === "undefined") {
@@ -67,7 +59,7 @@ export class ProjectPage {
     this.loading.present();
   }
 
-   
+
   getProjects() {
     this.showLoading();
 
@@ -89,14 +81,15 @@ export class ProjectPage {
     this.rest.getProjectDetails(id)
       .then((data: any) => {
         this.navCtrl.push(ProjectDetailsPage, { details: data.data });
+        this.loading.dismiss();
       },
-        error => this.errorMessage = <any>error
+        error => {
+          this.errorMessage = <any>error;
+          this.loading.dismiss();
+        }
       );
-
   }
-
   setFilteredItems() {
-    console.log(this.searchTerm);
     this.projects = this.rest.filterProjects(this.searchTerm);
   }
 

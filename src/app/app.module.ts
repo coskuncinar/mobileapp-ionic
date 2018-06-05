@@ -18,6 +18,7 @@ import { CompanyPage } from '../pages/company/company';
 import { ProjectPage } from '../pages/project/project';
 import { ProjectDetailsPage } from '../pages/project-details/project-details';
 import { Network } from '@ionic-native/network';
+import { CompanyDetailsPage } from '../pages/company-details/company-details';
 
 
 @NgModule({
@@ -29,6 +30,7 @@ import { Network } from '@ionic-native/network';
     LoginPage,
     TabsPage,
     CompanyPage,
+    CompanyDetailsPage,
     ProjectPage,
     ProjectDetailsPage
   ],
@@ -46,6 +48,7 @@ import { Network } from '@ionic-native/network';
     LoginPage,
     TabsPage,
     CompanyPage,
+    CompanyDetailsPage,
     ProjectPage,
     ProjectDetailsPage
   ],
