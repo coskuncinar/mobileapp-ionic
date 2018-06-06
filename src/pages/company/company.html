@@ -9,7 +9,7 @@
     <ion-refresher-content pullingIcon="arrow-dropdown" pullingText="Pull to refresh" refreshingSpinner="circles" refreshingText="Sayfa Yenileniyor...">
     </ion-refresher-content>
   </ion-refresher>
-  <ion-list>
+  <ion-list class="companylist">
     <button ion-item *ngFor="let c of companies" (click)="openDetails(c.id)">
         <div style="color: #f37249;"> {{c.id}} - {{c.companyName}} </div>
     </button>
