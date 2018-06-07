@@ -26,6 +26,7 @@ export class RestapiProvider {
   
   getUserInfo()  {  
     return new Promise((resolve, reject) => { 
+      console.log(this.apiUrl+'get-user-info/token/'+this.token);
       return this.http.get(this.apiUrl+'get-user-info/token/'+this.token)
       .subscribe( (res:ISonuc) => { 
           resolve(res); 

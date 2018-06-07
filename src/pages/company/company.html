@@ -1,5 +1,8 @@
 <ion-header>
   <ion-navbar color="dark">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
     <ion-title>Firma Listesi</ion-title>
   </ion-navbar>
   <ion-searchbar [(ngModel)]="searchTerm" (ionInput)="setFilteredItems()" placeholder="Arama"></ion-searchbar>
@@ -11,8 +14,7 @@
   </ion-refresher>
   <ion-list class="companylist">
     <button ion-item *ngFor="let c of companies" (click)="openDetails(c.id)">
-        <div style="color: #f37249;"> {{c.id}} - {{c.companyName}} </div>
+      <div style="color: #f37249;"> {{c.id}} - {{c.companyName}} </div>
     </button>
   </ion-list>
 </ion-content>
- 

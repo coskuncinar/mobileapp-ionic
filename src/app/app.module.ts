@@ -19,6 +19,7 @@ import { ProjectPage } from '../pages/project/project';
 import { ProjectDetailsPage } from '../pages/project-details/project-details';
 import { Network } from '@ionic-native/network';
 import { CompanyDetailsPage } from '../pages/company-details/company-details';
+import { ProfilePage } from '../pages/profile/profile';
 
 
 @NgModule({
@@ -32,7 +33,8 @@ import { CompanyDetailsPage } from '../pages/company-details/company-details';
     CompanyPage,
     CompanyDetailsPage,
     ProjectPage,
-    ProjectDetailsPage
+    ProjectDetailsPage,
+    ProfilePage
   ],
   imports: [
     BrowserModule,
@@ -50,7 +52,8 @@ import { CompanyDetailsPage } from '../pages/company-details/company-details';
     CompanyPage,
     CompanyDetailsPage,
     ProjectPage,
-    ProjectDetailsPage
+    ProjectDetailsPage,
+    ProfilePage
   ],
   providers: [
     StatusBar,

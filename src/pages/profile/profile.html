@@ -1,0 +1,36 @@
+<ion-header>
+  <ion-navbar color="dark">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Profilim</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="profile">
+  <ion-list no-padding>
+    <ion-row>
+      <ion-col>
+        <ion-item class="caption">
+          <div> {{userinfo.firstName}} {{userinfo.lastName}} </div>
+          <p style="color: #fff">#{{ id2 }}</p>
+        </ion-item>
+      </ion-col>
+      <ion-col col-12>
+        <ion-item>
+          <ion-label class="label">Mail</ion-label>
+          <ion-note item-end> {{ userinfo.email }} </ion-note>
+        </ion-item>
+      </ion-col>
+      <ion-col col-12>
+        <ion-item>
+          <ion-label class="label">GSM</ion-label>
+          <ion-note item-end> {{ userinfo.phone }} </ion-note>
+        </ion-item>
+      </ion-col>
+
+    </ion-row>
+  </ion-list>
+
+
+</ion-content>

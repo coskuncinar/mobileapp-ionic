@@ -1,7 +1,10 @@
 <ion-header>
     <ion-navbar color="dark">
+        <button ion-button menuToggle>
+            <ion-icon name="menu"></ion-icon>
+        </button>
         <ion-title>
-            <img src="assets/imgs/logo-b.png"/> 
+            <img src="assets/imgs/logo-b.png" />
         </ion-title>
         <ion-buttons end>
             <button ion-button (click)="logout()">
@@ -13,19 +16,6 @@
 
 
 <ion-content class="home">
-    <!-- <div class="wrapper">
-                <header>
-                   <h1>Ionic Technologies</h1>
-                </header>
-          
-                <div class="box red">
-                   <h2>Angular</h2>
-                   <p>Front-end development framework</p>
-                </div> 
-                <footer>Footer</footer>
-             </div>
-      -->
-
     <div style="text-align: center;">
         <h3>Hoşgeldiniz , {{userinfo.firstName}} {{userinfo.lastName}} </h3>
     </div>
@@ -40,7 +30,7 @@
             </div>
         </ion-col>
         <ion-col col-6>
-            <button ion-button class="submit-btn" full large margin (click)="projelist(2)"  >
+            <button ion-button class="submit-btn" full large margin (click)="projelist(2)">
                 <ion-icon name="checkmark-circle" item-left style="margin-right:10px;font-size: 40px "></ion-icon>
                 {{dashboard.closedProjectCount}}</button>
             <div style="background-color: #d56039;height: 25px;padding-top: 5px;text-align: center">
@@ -56,7 +46,7 @@
             </div>
         </ion-col>
         <ion-col col-6>
-            <button ion-button class="submit-btn" full large margin> 
+            <button ion-button class="submit-btn" full large margin>
                 <ion-icon name="flash" item-left style="margin-right:10px;font-size: 40px "></ion-icon>
                 {{dashboard.balanceCount}} </button>
             <div style="background-color: #d56039;height: 25px;padding-top: 5px;text-align: center">
