@@ -52,13 +52,16 @@ export class HomePage {
   }
   ionViewWillEnter() {
   //  console.log("ionViewWillEnter: before it becomes the active"); 
-    
     this.getDasboard();
   }
   projelist(status) {
     this.rest.projestatus=status;
     this.nav.parent.select(1);
   }
+  companylist(status) {
+    this.nav.parent.select(2);
+  }
+
   getDasboard() {
     this.rest.getDashboard()
       .then((data: ISonuc) => {

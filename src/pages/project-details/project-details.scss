@@ -8,8 +8,8 @@ page-project-details {
         vertical-align: super;
         font-size: smaller;
     }
-   .note-md  {
-        color:#000 !important;
+   .note-md ,.note-ios ,.note-wp  {
+        color:#111 !important;
     }
 
     .label {
@@ -24,5 +24,10 @@ page-project-details {
         .item-inner {
            border: 0px !important;
         } 
+    }
+    .sliders
+    {
+        //border:1px solid #333;
+        padding:5px;
     }
 }

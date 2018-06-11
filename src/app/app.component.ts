@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { Platform, AlertController, Nav } from 'ionic-angular';
+import { Platform, AlertController, Nav,  App } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
@@ -7,6 +7,7 @@ import { LoginPage } from '../pages/login/login';
 import { Network } from '@ionic-native/network';
 import { TabsPage } from '../pages/tabs/tabs';
 import { ProfilePage } from '../pages/profile/profile';
+import { AuthProvider } from '../providers/auth/auth';
 
 
 @Component({
@@ -20,14 +21,11 @@ export class MyApp {
 
   rootPage: any = LoginPage;
 
-  pages: Array<{ title: string, component: any }>;
+  pages: Array<{ title: string, icon: string; type: any; component: any }>;
 
 
-  constructor(
-    private network: Network,
-    platform: Platform,
-    public alertCtrl: AlertController,
-    statusBar: StatusBar, splashScreen: SplashScreen) {
+  constructor(private network: Network, platform: Platform, public alertCtrl: AlertController,
+    statusBar: StatusBar, splashScreen: SplashScreen, private auth: AuthProvider, private app: App) {
     platform.ready().then(() => {
       statusBar.styleDefault();
       splashScreen.hide();
@@ -49,16 +47,25 @@ export class MyApp {
     });
 
     this.pages = [
-      { title: 'Anasayfa', component: TabsPage },
-      { title: 'Profil', component: ProfilePage }
+      { title: 'Anasayfa', icon: 'home', type: '1', component: TabsPage },
+      { title: 'Profilim', icon: 'person', type: '1', component: ProfilePage },
+      { title: 'Çıkış', icon: 'log-out', type: '2', component: null }
     ];
 
   }
 
+  // sites of  sidemenu click then choose  tabs menu or go in page 
+  //https://devdactic.com/ionic-side-menu-tabs/
+
+
   openPage(page) {
-    // Reset the content nav to have just this page
-    // we wouldn't want the back button to show in this scenario
-    this.nav.setRoot(page.component);
+    if (page.type == '2') {
+      this.auth.logout().subscribe(succ => {
+        this.app.getRootNavs()[0].setRoot(LoginPage);
+      });
+    } else {
+      this.nav.setRoot(page.component);
+    }
   }
 
 }

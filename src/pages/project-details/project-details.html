@@ -4,13 +4,14 @@
     </ion-navbar>
 </ion-header>
 <ion-content class="project-details" no-padding>
-    <ion-slides *ngIf="details.photos && details.photos.length" autoplay="5000" loop="true" speed="500" class="slides" pager="true"
-        style="height: 100px;">
-        <ion-slide *ngFor="let slide of details.photos">
-            <img src="{{slide.photo}}" height="30px" />
-        </ion-slide>
-    </ion-slides>
-
+    <div class="sliders">
+        <ion-slides *ngIf="details.photos && details.photos.length" autoplay="5000" loop="true" speed="500" class="slides" pager="true"
+            style="height: 140px;">
+            <ion-slide *ngFor="let slide of details.photos">
+                <img src="{{slide.photo}}" style="width: 100%;height: %100;" />
+            </ion-slide>
+        </ion-slides>
+    </div>
     <ion-list no-padding>
         <ion-row>
             <ion-col>
@@ -20,7 +21,7 @@
                 </ion-item>
             </ion-col>
             <ion-col col-12>
-                <ion-item >
+                <ion-item>
                     <ion-label class="label">Bedeli</ion-label>
                     <ion-note item-end> {{ details.price | currency:' ':false }} {{details.currency.toUpperCase()}} </ion-note>
                 </ion-item>
@@ -92,11 +93,12 @@
             <ion-col col-12>
                 <ion-item>
                     <ion-label class="label">Proje Açıklaması</ion-label>
+                    <ion-icon name="arrow-down" item-end></ion-icon>
                 </ion-item>
             </ion-col>
             <ion-col col-12>
                 <ion-item>
-                    <ion-note  text-wrap>
+                    <ion-note text-wrap style="font-weight: 400">
                         {{ details.description }}
                     </ion-note>
                 </ion-item>

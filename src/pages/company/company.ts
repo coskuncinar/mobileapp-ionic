@@ -67,12 +67,12 @@ export class CompanyPage {
     this.showLoading();
     this.rest.getCompanyDetails(id)
       .then((data: any) => {
-        console.log(data);
+        //console.log(data);
         this.navCtrl.push(CompanyDetailsPage, { cdetails: data.data });
         //this.loading.dismiss();
       },
         error => {
-          console.log(error);
+          //console.log(error);
           this.errorMessage = <any>error;
           //this.loading.dismiss();
         }

@@ -6,8 +6,8 @@
 
 
 <ion-content class="company-details" no-padding>
-  <div>
-    <img src={{details.logoPath}} alt="your image" style="width: 100%;height: auto;">
+  <div ng-show="details.logoPath">
+    <img src={{details.logoPath}}  class="displayed">
   </div>
   <ion-list no-padding>
     <ion-row>
