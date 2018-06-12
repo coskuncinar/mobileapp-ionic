@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { Platform, AlertController, Nav,  App } from 'ionic-angular';
+import { Platform, AlertController, Nav, App } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
@@ -48,6 +48,8 @@ export class MyApp {
 
     this.pages = [
       { title: 'Anasayfa', icon: 'home', type: '1', component: TabsPage },
+      { title: 'Aktif Projeler', icon: 'person', type: '1', component: ProfilePage },
+      { title: 'Tamamlanmış Projeler', icon: 'person', type: '1', component: ProfilePage },
       { title: 'Profilim', icon: 'person', type: '1', component: ProfilePage },
       { title: 'Çıkış', icon: 'log-out', type: '2', component: null }
     ];
