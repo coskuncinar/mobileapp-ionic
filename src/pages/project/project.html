@@ -5,7 +5,7 @@
     </button>
     <ion-title>Proje Listesi </ion-title>
   </ion-navbar>
-  <ion-searchbar [(ngModel)]="searchTerm" (ionInput)="setFilteredItems()" placeholder="Arama"></ion-searchbar>
+  <ion-searchbar [(ngModel)]="searchTerm"   placeholder="Arama"></ion-searchbar>
 </ion-header>
 <ion-content class="project">
 
@@ -14,7 +14,7 @@
     </ion-refresher-content>
   </ion-refresher>
   <ion-list class="projectlist">
-    <button ion-item *ngFor="let c of projects" (click)="openDetails(c.id)">
+    <button ion-item *ngFor="let c of projects | filter :'title' : searchTerm; let i = index" (click)="openDetails(c.id)">
       <div style="color: #f37249;"> {{c.id}} - {{c.title}} </div>
       <p>
         <span class="floatLeft">{{ c.cityGroupName }} -{{ c.cityName }} - {{ c.stateName }}</span>
