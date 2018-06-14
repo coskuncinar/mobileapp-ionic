@@ -20,7 +20,6 @@ import { ProjectDetailsPage } from '../pages/project-details/project-details';
 import { Network } from '@ionic-native/network';
 import { CompanyDetailsPage } from '../pages/company-details/company-details';
 import { ProfilePage } from '../pages/profile/profile';
-import { FilterPipe } from '../pipes/filter/filter';
 
 
 @NgModule({
@@ -35,8 +34,7 @@ import { FilterPipe } from '../pipes/filter/filter';
     CompanyDetailsPage,
     ProjectPage,
     ProjectDetailsPage,
-    ProfilePage,
-    FilterPipe
+    ProfilePage
   ],
   imports: [
     BrowserModule,
