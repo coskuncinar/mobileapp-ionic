@@ -1,0 +1,10 @@
+#!/bin/bash 
+cd /d/ProgramFiles/Android/Sdk/emulator/
+emulator -list-avds | cat -n
+#printf "Select AVD: "
+#read index
+#avd=$(emulator -list-avds | sed "${index}q;d")
+avd=$(emulator -list-avds | sed "1q;d")
+echo "Selected $avd"
+./emulator.exe -netdelay none -netspeed full -avd $avd 
+#&disown &exit
