@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, Loading, LoadingController } from 'ionic-angular';
 import { RestapiProvider } from '../../providers/restapi/restapi';
 import { ProjectDetailsPage } from '../project-details/project-details';
+import { ConsProvider } from '../../providers/cons/cons';
 
 interface ISonuc {
   readonly result: any;
@@ -25,6 +26,7 @@ export class ProjectPage {
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
     public rest: RestapiProvider,
+    public cons: ConsProvider,
     private loadingCtrl: LoadingController) {
 
   }
@@ -42,13 +44,13 @@ export class ProjectPage {
   }
 
   ionViewWillEnter() {
-    this.status = this.rest.projestatus;
+    this.status = this.cons.projestatus;
     if (typeof this.status === "undefined") {
       this.status = 0;
     }
     this.searchTerm = '';
     this.getProjects();
-    this.rest.projestatus = 0;
+    this.cons.projestatus = 0;
   }
 
   showLoading() {

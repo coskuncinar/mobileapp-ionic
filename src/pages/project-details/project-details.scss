@@ -1,9 +1,14 @@
 page-project-details {
     .project-details {
-        background-color: #424446;
-        color: #fff;
-      }
-    
+        background-color: #424446  !important;
+        color: #fff; 
+         
+    }
+      ._gmaps_cdv_ .nav-decor {
+        display: none !important;
+        background-color: rgba(0,0,0,0) !important;
+        background: rgba(0,0,0,0) !important;
+    }
     .squaremeters {
         vertical-align: super;
         font-size: smaller;
@@ -27,7 +32,9 @@ page-project-details {
     }
     .sliders
     {
-        //border:1px solid #333;
         padding:5px;
-    }
+    } 
+     
+
+  
 }

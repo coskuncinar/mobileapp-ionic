@@ -14,7 +14,6 @@ interface ISonuc {
 export class RestapiProvider {
 
   token = '';
-  public projestatus: any;
   public tempProjeDetay: ISonuc;
   public tempCompanyDetay: ISonuc;
   private apiUrl = 'https://www.sizinproje.com/api/';

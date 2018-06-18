@@ -4,6 +4,7 @@ import { LoginPage } from '../login/login';
 
 import { App, NavController } from 'ionic-angular';
 import { RestapiProvider } from '../../providers/restapi/restapi';
+import { ConsProvider } from '../../providers/cons/cons';
 
 interface ISonuc {
   readonly result: any;
@@ -33,6 +34,7 @@ export class HomePage {
   constructor(private auth: AuthProvider, private app: App, 
     public rest: RestapiProvider, 
     public nav: NavController,
+    public cons:ConsProvider
   ) {
     let info = this.auth.getUserInfo();
     this.email = info['email'];
@@ -55,7 +57,7 @@ export class HomePage {
     this.getDasboard();
   }
   projelist(status) {
-    this.rest.projestatus=status;
+    this.cons.projestatus=status;
     this.nav.parent.select(1);
   }
   companylist(status) {

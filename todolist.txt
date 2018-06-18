@@ -1,1 +1,6 @@
 ionic cordova plugin add cordova-plugin-googlemaps  --variable API_KEY_FOR_ANDROID="AIzaSyBI1EeYUODD6Bb_4ciTEQHjdyEKhtyoOLc"  --variable API_KEY_FOR_IOS="AIzaSyBI1EeYUODD6Bb_4ciTEQHjdyEKhtyoOLc"
+
+ionic cordova plugin add https://github.com/mapsplugin/cordova-plugin-googlemaps --variable API_KEY_FOR_ANDROID="AIzaSyBI1EeYUODD6Bb_4ciTEQHjdyEKhtyoOLc" --variable API_KEY_FOR_IOS="AIzaSyBI1EeYUODD6Bb_4ciTEQHjdyEKhtyoOLc"
+
+ 
+cordova plugin add cordova-plugin-googlemaps --variable API_KEY_FOR_ANDROID="AIzaSyCV8ZE3bdgovsGN_--YXTa4iQ0w4f_9rnE" --variable API_KEY_FOR_IOS="AIzaSyCV8ZE3bdgovsGN_--YXTa4iQ0w4f_9rnE"

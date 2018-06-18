@@ -20,7 +20,9 @@ import { ProjectDetailsPage } from '../pages/project-details/project-details';
 import { Network } from '@ionic-native/network';
 import { CompanyDetailsPage } from '../pages/company-details/company-details';
 import { ProfilePage } from '../pages/profile/profile';
-
+import { GoogleMaps } from '@ionic-native/google-maps';
+import { LaunchNavigator } from '@ionic-native/launch-navigator';
+import { ConsProvider } from '../providers/cons/cons';
 
 @NgModule({
   declarations: [
@@ -61,7 +63,10 @@ import { ProfilePage } from '../pages/profile/profile';
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     AuthProvider,
     RestapiProvider,
-    Network
+    Network,
+    GoogleMaps,
+    LaunchNavigator,
+    ConsProvider
   ]
 })
 export class AppModule {}

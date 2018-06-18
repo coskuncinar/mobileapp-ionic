@@ -8,7 +8,7 @@ import { Network } from '@ionic-native/network';
 import { TabsPage } from '../pages/tabs/tabs';
 import { ProfilePage } from '../pages/profile/profile';
 import { AuthProvider } from '../providers/auth/auth';
-
+import { ConsProvider } from '../providers/cons/cons';
 
 @Component({
   selector: 'page-app-root',
@@ -21,11 +21,18 @@ export class MyApp {
 
   rootPage: any = LoginPage;
 
-  pages: Array<{ title: string, icon: string; type: any; component: any }>;
+  pages: Array<{
+    title: string,
+    icon: string;
+    index: any;
+    component: any,
+    param: any
+  }>;
 
 
   constructor(private network: Network, platform: Platform, public alertCtrl: AlertController,
-    statusBar: StatusBar, splashScreen: SplashScreen, private auth: AuthProvider, private app: App) {
+    statusBar: StatusBar, splashScreen: SplashScreen, private auth: AuthProvider, private app: App,
+     public cons:ConsProvider) {
     platform.ready().then(() => {
       statusBar.styleDefault();
       splashScreen.hide();
@@ -47,11 +54,11 @@ export class MyApp {
     });
 
     this.pages = [
-      { title: 'Anasayfa', icon: 'home', type: '1', component: TabsPage },
-      { title: 'Aktif Projeler', icon: 'person', type: '1', component: ProfilePage },
-      { title: 'Tamamlanmış Projeler', icon: 'person', type: '1', component: ProfilePage },
-      { title: 'Profilim', icon: 'person', type: '1', component: ProfilePage },
-      { title: 'Çıkış', icon: 'log-out', type: '2', component: null }
+      { title: 'Anasayfa', icon: 'home', index: 0, component: TabsPage, param: null },
+      { title: 'Aktif Projeler', icon: 'calculator', index: 1, component: TabsPage, param: 1 },
+      { title: 'T. Projeler', icon: 'calculator', index: 1, component: TabsPage, param: 2 },
+      { title: 'Profilim', icon: 'person', index: null, component: ProfilePage, param: null },
+      { title: 'Çıkış', icon: 'log-out', index: null, component: null, param: null }
     ];
 
   }
@@ -61,12 +68,33 @@ export class MyApp {
 
 
   openPage(page) {
-    if (page.type == '2') {
+
+    // let params = {};
+
+    // // The index is equal to the order of our tabs inside tabs.ts
+    // if (page.index) {
+    //   params = { tabIndex: page.index };
+    // }
+
+    // if (this.nav.getActiveChildNav() && page.index != undefined) {
+    //   this.nav.getActiveChildNav().select(page.index);
+    // } else {
+    //   this.nav.setRoot(page.pageName, params);
+    // }
+
+
+    if (page.index === null && page.component === null) {
       this.auth.logout().subscribe(succ => {
         this.app.getRootNavs()[0].setRoot(LoginPage);
       });
-    } else {
+    }
+    else if (page.index === null && page.component != undefined) {
       this.nav.setRoot(page.component);
+    }
+    else {
+      console.log(page);
+      this.cons.projestatus = page.param;
+      this.nav.getActiveChildNav().select(page.index);
     }
   }
 
