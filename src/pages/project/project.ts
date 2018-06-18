@@ -30,7 +30,9 @@ export class ProjectPage {
     private loadingCtrl: LoadingController) {
 
   }
-
+  ionSelected() {
+    this.ionViewWillEnter();
+  }
   doRefresh(refresher) {
     setTimeout(() => {
       this.status = 0;//this.rest.projestatus;

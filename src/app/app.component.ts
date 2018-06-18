@@ -32,7 +32,7 @@ export class MyApp {
 
   constructor(private network: Network, platform: Platform, public alertCtrl: AlertController,
     statusBar: StatusBar, splashScreen: SplashScreen, private auth: AuthProvider, private app: App,
-     public cons:ConsProvider) {
+    public cons: ConsProvider) {
     platform.ready().then(() => {
       statusBar.styleDefault();
       splashScreen.hide();
@@ -69,12 +69,12 @@ export class MyApp {
 
   openPage(page) {
 
-    // let params = {};
+    let params = {};
 
     // // The index is equal to the order of our tabs inside tabs.ts
-    // if (page.index) {
-    //   params = { tabIndex: page.index };
-    // }
+    if (page.index) {
+      params = { tabIndex: page.index };
+    }
 
     // if (this.nav.getActiveChildNav() && page.index != undefined) {
     //   this.nav.getActiveChildNav().select(page.index);
@@ -92,10 +92,14 @@ export class MyApp {
       this.nav.setRoot(page.component);
     }
     else {
-      console.log(page);
       this.cons.projestatus = page.param;
-      this.nav.getActiveChildNav().select(page.index);
+      if (this.nav.getActiveChildNav() != undefined) {
+        this.nav.getActiveChildNav().select(page.index); 
+        
+      }
+      else {
+        this.nav.setRoot(page.component, params);
+      }
     }
   }
-
 }

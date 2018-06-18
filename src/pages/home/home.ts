@@ -31,10 +31,10 @@ export class HomePage {
   }
   errorMessage: string;
 
-  constructor(private auth: AuthProvider, private app: App, 
-    public rest: RestapiProvider, 
+  constructor(private auth: AuthProvider, private app: App,
+    public rest: RestapiProvider,
     public nav: NavController,
-    public cons:ConsProvider
+    public cons: ConsProvider
   ) {
     let info = this.auth.getUserInfo();
     this.email = info['email'];
@@ -42,6 +42,7 @@ export class HomePage {
   }
 
   ionViewDidLoad() {
+    //console.log("Fired only when a view is stored in memory. ");
     this.getUserInfo();
   }
   getUserInfo() {
@@ -53,11 +54,11 @@ export class HomePage {
       );
   }
   ionViewWillEnter() {
-  //  console.log("ionViewWillEnter: before it becomes the active"); 
+    //console.log("ionViewWillEnter: before it becomes the active");
     this.getDasboard();
   }
   projelist(status) {
-    this.cons.projestatus=status;
+    this.cons.projestatus = status;
     this.nav.parent.select(1);
   }
   companylist(status) {
@@ -72,7 +73,7 @@ export class HomePage {
         error => this.errorMessage = <any>error
       );
   }
-  
+
 
   public logout() {
     this.auth.logout().subscribe(succ => {
@@ -80,31 +81,32 @@ export class HomePage {
     });
   }
 
-  
-}
 
 
-//ionViewDidLoad(){
+
+
+  // ionViewDidLoad() {
   //   console.log("Fired only when a view is stored in memory. ");
-  //}
+  // }
   // ionViewWillEnter() {
-  //   console.log("ionViewWillEnter: before it becomes the active"); 
+  //   console.log("ionViewWillEnter: before it becomes the active");
   // }
   // ionViewDidEnter() {
   //   console.log("ionViewDidEnter: after it becomes the active");
-  // } 
+  // }
   // ionViewWillLeave() {
   //   console.log("ionViewWillLeave: before it stops being the active");
-  // } 
+  // }
   // ionViewDidLeave() {
   //   console.log("ionViewDidLeave: after it stops being the active");
-  // } 
+  // }
   // ionViewWillUnload() {
   //   console.log("ionViewWillUnload: Fired when a view is going to be completely removed");
-  // }  
+  // }
   // ionViewCanEnter() {
   //   console.log("ionViewCanEnter: Fired before entering into a view");
-  // } 
+  // }
   // ionViewCanLeave() {
   //   console.log("ionViewCanLeave: Fired before leaving a view");
-  // } 
+  // }
+}
