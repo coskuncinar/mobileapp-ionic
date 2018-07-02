@@ -5,7 +5,16 @@
     </button>
     <ion-title>Proje Listesi </ion-title>
   </ion-navbar>
-  <ion-searchbar [(ngModel)]="searchTerm" (ionInput)="setFilteredItems()"   placeholder="Arama"></ion-searchbar>
+  <ion-searchbar [(ngModel)]="searchTerm" (ionInput)="setFilteredItems()" placeholder="Arama"></ion-searchbar>
+  <div>
+    <button ion-button color="dark" style="background-color: red" (click)="chooseType(0)" #ps0 id="ps0">Hepsi</button>
+    <button ion-button color="dark" (click)="chooseType(1)" #ps1 id="ps1">Harfiyat</button>
+    <button ion-button color="dark" (click)="chooseType(2)" #ps2 id="ps2">Temel</button>
+    <button ion-button color="dark" (click)="chooseType(3)" #ps3 id="ps3">Kaba</button>
+    <button ion-button color="dark" (click)="chooseType(4)" #ps4 id="ps4">İnce</button>
+    <button ion-button color="dark" (click)="chooseType(5)" #ps5 id="ps5">Peyzaj</button>
+    <button ion-button color="dark" (click)="chooseType(6)" #ps6 id="ps6">Ruhsat</button>
+  </div>
 </ion-header>
 <ion-content class="project">
 
@@ -20,7 +29,8 @@
         <span class="floatLeft">{{ c.cityGroupName }} -{{ c.cityName }} - {{ c.stateName }}</span>
       </p>
       <p>
-        <span class="floatRight"> Güncelleme tarihi : {{ c.updatedDate | date:"dd-MM-yyy"}}</span>
+        <span class="floatRight"> Güncelleme tarihi : {{ c.updatedDate | date:"dd-MM-yyy"}} - {{c.projectStatus}}</span>
+
       </p>
 
     </button>

@@ -2,13 +2,11 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { AuthProvider } from '../auth/auth';
 
-
 interface ISonuc {
   readonly result: any;
   readonly message: any;
   readonly data: any;
 }
-
 
 @Injectable()
 export class RestapiProvider {
@@ -25,7 +23,6 @@ export class RestapiProvider {
 
   getUserInfo() {
     return new Promise((resolve, reject) => {
-      //console.log(this.apiUrl+'get-user-info/token/'+this.token);
       return this.http.get(this.apiUrl + 'get-user-info/token/' + this.token)
         .subscribe((res: ISonuc) => {
           resolve(res);
@@ -46,9 +43,9 @@ export class RestapiProvider {
     });
   }
 
-
   getProjects(status) {
     return new Promise((resolve, reject) => {
+      console.log(this.apiUrl + 'get-project-list/status/' + status + '/token/' + this.token);
       return this.http.get(this.apiUrl + 'get-project-list/status/' + status + '/token/' + this.token)
         .subscribe((res: ISonuc) => {
           this.tempProjeDetay = res;
@@ -59,9 +56,19 @@ export class RestapiProvider {
     });
   }
 
+  filterProjects(searchTerm, projectStatus) {
+    let val = searchTerm.toLowerCase();
+    let val2 = parseInt(projectStatus);
+    return this.tempProjeDetay.data.filter((item) => {
+      return ( (item.id.toLowerCase().indexOf(val) > -1 ||
+        item.title.toLowerCase().indexOf(val) > -1) &&
+        ( val2>0 ?item.projectStatus.toLowerCase().indexOf(val2)> -1:true) 
+      );
+    });
+  }
+
   getProjectDetails(id) {
     return new Promise((resolve, reject) => {
-      //console.log(this.apiUrl+'get-project-detail/token/'+this.token+'/id/'+id);
       return this.http.get(this.apiUrl + 'get-project-detail/token/' + this.token + '/id/' + id)
         .subscribe(res => {
           resolve(res);
@@ -70,27 +77,12 @@ export class RestapiProvider {
         });
     });
   }
-  filterProjects(searchTerm) {
-    // return this.tempProjeDetay.data.filter((item) => {
-    //   return item.title.toLowerCase().indexOf(searchTerm.toLowerCase()) > -1;
-    // });
-    let val = searchTerm.toLowerCase();; 
 
-    return this.tempProjeDetay.data.filter((item) => {
-      //return item.companyName.toLowerCase().indexOf(searchTerm.toLowerCase()) > -1;
-      return (item.id.toLowerCase().indexOf(val) > -1 ||
-        item.title.toLowerCase().indexOf(val) > -1);
-
-    });
-
-
-  }
 
   getCompanies() {
     return new Promise((resolve, reject) => {
       return this.http.get(this.apiUrl + 'get-company-list/token/' + this.token)
         .subscribe((res: ISonuc) => {
-          //console.log(res)
           this.tempCompanyDetay = res;
           resolve(this.tempCompanyDetay);
         }, (err) => {
@@ -99,10 +91,19 @@ export class RestapiProvider {
     });
   }
 
+  filterCompanies(searchTerm) {
+    let stringofWord = searchTerm.trim().split(' ');
+    console.log(stringofWord);
+    let val = searchTerm.toLowerCase();
+
+    return this.tempCompanyDetay.data.filter((item) => {
+      return (item.id.toLowerCase().indexOf(val) > -1 ||
+        item.companyName.toLowerCase().indexOf(val) > -1);
+    });
+  }
 
   getCompanyDetails(id) {
     return new Promise((resolve, reject) => {
-      //console.log(this.apiUrl+'get-company-detail/token/'+this.token+'/id/'+id);
       return this.http.get(this.apiUrl + 'get-company-detail/token/' + this.token + '/id/' + id)
         .subscribe(res => {
           resolve(res);
@@ -111,19 +112,4 @@ export class RestapiProvider {
         });
     });
   }
- 
-  filterCompanies(searchTerm) {
-    //let searhClear =searchTerm.trim().split(' ');
-    // let stringofWord = searchTerm.split(' ');
-    // console.log(stringofWord); 
-    let val = searchTerm.toLowerCase();; 
-    return this.tempCompanyDetay.data.filter((item) => {
-      //return item.companyName.toLowerCase().indexOf(searchTerm.toLowerCase()) > -1;
-      return (item.id.toLowerCase().indexOf(val) > -1 ||
-        item.companyName.toLowerCase().indexOf(val) > -1);
-
-    });
-  }
-
-
 }

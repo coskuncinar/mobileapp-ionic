@@ -56,7 +56,8 @@ export class MyApp {
     this.pages = [
       { title: 'Anasayfa', icon: 'home', index: 0, component: TabsPage, param: null },
       { title: 'Aktif Projeler', icon: 'calculator', index: 1, component: TabsPage, param: 1 },
-      { title: 'T. Projeler', icon: 'calculator', index: 1, component: TabsPage, param: 2 },
+      { title: 'Tamamlanan Projeler', icon: 'calculator', index: 1, component: TabsPage, param: 2 },
+      { title: 'Aktif Firmalar', icon: 'calculator', index: 2, component: TabsPage, param: null },
       { title: 'Profilim', icon: 'person', index: null, component: ProfilePage, param: null },
       { title: 'Çıkış', icon: 'log-out', index: null, component: null, param: null }
     ];
