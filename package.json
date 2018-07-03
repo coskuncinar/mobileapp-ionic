@@ -21,6 +21,7 @@
     "@angular/http": "5.2.10",
     "@angular/platform-browser": "5.2.10",
     "@angular/platform-browser-dynamic": "5.2.10",
+    "@ionic-native/app-version": "^4.9.0",
     "@ionic-native/core": "4.7.0",
     "@ionic-native/google-maps": "^4.8.2",
     "@ionic-native/launch-navigator": "^4.7.0",
@@ -32,6 +33,7 @@
     "cordova-android": "7.0.0",
     "cordova-ios": "4.5.4",
     "cordova-plugin-actionsheet": "^2.3.3",
+    "cordova-plugin-app-version": "^0.1.9",
     "cordova-plugin-device": "^2.0.2",
     "cordova-plugin-dialogs": "^2.0.1",
     "cordova-plugin-googlemaps": "^2.3.6",
@@ -75,7 +77,8 @@
       "uk.co.workingedge.phonegap.plugin.launchnavigator": {
         "OKHTTP_VERSION": "3.+",
         "LOCATION_USAGE_DESCRIPTION": "This app requires access to your location for navigation purposes"
-      }
+      },
+      "cordova-plugin-app-version": {}
     },
     "platforms": [
       "android",

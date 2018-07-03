@@ -9,6 +9,7 @@ import { TabsPage } from '../pages/tabs/tabs';
 import { ProfilePage } from '../pages/profile/profile';
 import { AuthProvider } from '../providers/auth/auth';
 import { ConsProvider } from '../providers/cons/cons';
+import { AboutPage } from '../pages/about/about';
 
 @Component({
   selector: 'page-app-root',
@@ -56,9 +57,10 @@ export class MyApp {
     this.pages = [
       { title: 'Anasayfa', icon: 'home', index: 0, component: TabsPage, param: null },
       { title: 'Aktif Projeler', icon: 'calculator', index: 1, component: TabsPage, param: 1 },
-      { title: 'Tamamlanan Projeler', icon: 'calculator', index: 1, component: TabsPage, param: 2 },
-      { title: 'Aktif Firmalar', icon: 'calculator', index: 2, component: TabsPage, param: null },
+      { title: 'Tamamlanan Projeler', icon: 'checkmark-circle', index: 1, component: TabsPage, param: 2 },
+      { title: 'Aktif Firmalar', icon: 'list', index: 2, component: TabsPage, param: null },
       { title: 'Profilim', icon: 'person', index: null, component: ProfilePage, param: null },
+      { title: 'Hakkımızda', icon: 'information', index: null, component: AboutPage, param: null },
       { title: 'Çıkış', icon: 'log-out', index: null, component: null, param: null }
     ];
 

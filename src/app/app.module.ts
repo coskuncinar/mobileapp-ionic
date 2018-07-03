@@ -23,6 +23,7 @@ import { ProfilePage } from '../pages/profile/profile';
 import { GoogleMaps } from '@ionic-native/google-maps';
 import { LaunchNavigator } from '@ionic-native/launch-navigator';
 import { ConsProvider } from '../providers/cons/cons';
+import { AppVersion } from '@ionic-native/app-version';
 
 @NgModule({
   declarations: [
@@ -66,7 +67,8 @@ import { ConsProvider } from '../providers/cons/cons';
     Network,
     GoogleMaps,
     LaunchNavigator,
-    ConsProvider
+    ConsProvider,
+    AppVersion
   ]
 })
 export class AppModule {}

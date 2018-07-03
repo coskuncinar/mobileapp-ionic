@@ -1,3 +1,24 @@
 page-about {
-
+    .about {
+        background: #424446;
+        color: #fff;
+        .note-md  {
+            color:#000 !important;
+        }
+    
+        .label {
+            font-weight: bold;
+        }
+        .caption {
+            background-color: #666;
+            border-bottom: 1px solid #222;
+            box-shadow: 0 0 5px 0px #222;
+            color:#fff;
+    
+            .item-inner {
+               border: 0px !important;
+            } 
+        }
+    }
+    
 }

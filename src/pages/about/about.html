@@ -1,11 +1,41 @@
 <ion-header>
-  <ion-navbar>
-    <ion-title>
-      About
-    </ion-title>
+  <ion-navbar color="dark">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Hakkımızda</ion-title>
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
+<ion-content class="about">
+  <ion-list no-padding>
+    <ion-row>  
+      <ion-col col-12>
+        <ion-item>
+          <ion-label class="label">Telefon</ion-label>
+          <ion-note item-end> +090 850 305 3 555 </ion-note>
+        </ion-item>
+      </ion-col>
+      <ion-col col-12>
+        <ion-item>
+          <ion-label class="label">Eposta</ion-label>
+          <ion-note item-end> info@sizinproje.com </ion-note>
+        </ion-item>
+      </ion-col>
+      <ion-col col-12>
+        <ion-item>
+          <ion-label class="label">Adres</ion-label>
+          <ion-note item-end>Sancaktepe/İSTANBUL </ion-note>
+        </ion-item>
+      </ion-col>
+      <ion-col col-12>
+        <ion-item>
+          <ion-label class="label">Version</ion-label>
+          <ion-note item-end> {{ version }} </ion-note>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+  </ion-list>
+
 
 </ion-content>
