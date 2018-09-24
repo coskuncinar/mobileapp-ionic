@@ -40,10 +40,12 @@ export class LoginPage {
          if (sonuc.result ==="success") {        
           this.nav.setRoot(TabsPage);
         } else {
-          this.showError(sonuc.message);
+          this.showError("Giriş Hatası",sonuc.message);
         }         
     }, (err) => {
-      this.showError(err);
+      if (err.statusText=="Unknown Error") {
+        this.showError("Erişim Hatası","Sizinproje.com ait servislerine erişilemiyor!");
+      }
     }); 
   }
  
@@ -55,12 +57,13 @@ export class LoginPage {
     this.loading.present();
   }
  
-  showError(text) {
+  showError(caption,text) {
     this.loading.dismiss(); 
     let alert = this.alertCtrl.create({
-      title: 'Hata',
+      title: caption,
       subTitle: text, 
-      buttons: ['Tamam']
+      buttons: ['Tamam'],
+      cssClass: 'alertCustomCss'
     });
     alert.present();
   }
