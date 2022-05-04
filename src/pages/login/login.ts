@@ -46,7 +46,7 @@ export class LoginPage {
         //console.log(err);
           console.log(err.statusText);
         if (err.statusText == "Unknown Error") {
-          this.showError("Erişim hatası!","Sizinproje.com servislerine erişilemiyor!");
+          this.showError("Erişim Hatası!","Sizinproje.com servislerine erişilemiyor!");
         }
       }); 
   }
